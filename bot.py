@@ -19,20 +19,25 @@ def get_live_matches():
     return []
 
 def analyze_match(match):
-    stats = match.get("statistics", [])
-    # Простая логика: если ударов по воротам > 15 и xG >= 2.0 — вероятен гол
+    stats = match.get("statistics")
+    if not stats:
+        return None
+
     team1 = match["teams"]["home"]["name"]
     team2 = match["teams"]["away"]["name"]
-    shots = match["statistics"]
-    if shots:
-        home_shots = shots[0]["statistics"]
-        away_shots = shots[1]["statistics"]
-        total_shots = 0
-        for stat in home_shots + away_shots:
-            if stat["type"] == "Shots on Goal" and stat["value"]:
-                total_shots += stat["value"]
-        if total_shots >= 15:
-           return f"{team1} vs {team2} - Возможен гол! Удары в створ: {total_shots}"
+    shots = stats
+
+    home_shots = shots[0]["statistics"]
+    away_shots = shots[1]["statistics"]
+
+    total_shots = 0
+    for stat in home_shots + away_shots:
+        if stat["type"] == "Shots on Goal" and stat["value"]:
+            total_shots += stat["value"]
+
+    if total_shots >= 15:
+        return f"{team1} vs {team2} - Возможен гол! Удары в створ: {total_shots}"
+    
     return None
 
 def main():
