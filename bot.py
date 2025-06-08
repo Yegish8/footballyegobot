@@ -110,9 +110,3 @@ def main():
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     main()
-_matches.add(match_id)
-        time.sleep(60)
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    main()
