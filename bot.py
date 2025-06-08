@@ -51,7 +51,7 @@ def main():
             alert = analyze_match(match)
             if alert:
                 bot.send_message(chat_id="@Footballyegobot", text=alert)
-                sentimport os
+import os
 import requests
 import time
 import logging
