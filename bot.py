@@ -35,7 +35,7 @@ def analyze_match(match):
         if stat["type"] == "Shots on Goal" and stat["value"]:
             total_shots += stat["value"]
 
-    if total_shots >= 15:
+    if total_shots >= 5:
         return f"{team1} vs {team2} - Возможен гол! Удары в створ: {total_shots}"
     
     return None
