@@ -8,7 +8,7 @@ API_KEY = os.getenv("API_KEY")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 bot = Bot(token=BOT_TOKEN)
 
-# 🔧 Настройки
+#   Настройки
 CHAT_ID = 5050917770               # Твой Telegram ID
 TOTAL_THRESHOLD = 2.5             # Уведомление, если total <= этого значения
 MINUTE_TRIGGER = 60               # Минут с начала матча, после которых начинаем следить
@@ -50,7 +50,7 @@ def analyze_match(match):
         return None
 
     if total_goals <= TOTAL_THRESHOLD:
-        return f"⚽ {home} vs {away}\n🌍 {league['country']} | {league['name']}\n⏱ {minute} минута\nСчёт: {home_goals} - {away_goals}\n❗ Возможно скоро будет гол!"
+        return f"⚽ {home} vs {away}\n  {league['country']} | {league['name']}\n⏱ {minute} минута\nСчёт: {home_goals} - {away_goals}\n❗ Возможно скоро будет гол!"
 
     return None
 
@@ -70,7 +70,7 @@ def main():
                 try:
                     bot.send_message(chat_id=CHAT_ID, text=alert)
                     sent_matches.add(match_id)
-                    logging.info(f"🔔 Отправлено: {alert}")
+                    logging.info(f"  Отправлено: {alert}")
                 except error.TelegramError as e:
                     logging.error(f"Telegram error: {e}")
 
